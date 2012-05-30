@@ -1,0 +1,11 @@
+Rxvt*background: black
+Rxvt*foreground: white
+Rxvt*scrollBar_right: true
+Rxvt*saveLines: 1000
+Rxvt*font: consolas 
+Rxvt*boldFont: consolas
+Rxvt*cursorColor: white
+Rxvt*loginShell: true
+Rxvt*geometry: 80x60
+Xterm*background: black
+Xterm*foreground: white

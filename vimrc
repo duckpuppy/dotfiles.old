@@ -152,6 +152,7 @@ let g:tagbar_expand = 1
 
 " Configure UltiSnips
 let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsListSnippets="<c-`>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsEditSplit="normal"
@@ -246,6 +247,13 @@ inoremap <c-w> <c-g>u<c-w>
 
 " AutoComplPop Configuration
 let g:acp_enableAtStartup = 0
+
+inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ?
+			\ "\<lt>C-n>" :
+			\ "\<lt>C-x>\<lt>C-o><c-r>=pumvisible() ?" .
+			\ "\"\\<lt>c-n>\\<lt>c-p>\\<lt>c-n>\" :" .
+			\ "\" \\<lt>bs>\\<lt>C-n>\"\<CR>"
+imap <C-@> <C-Space>
 
 " Abbreviations
 

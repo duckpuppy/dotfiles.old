@@ -171,6 +171,8 @@ export VISUAL="vim"
 export EDITOR="vim"
 #alias emacs="vim"
 
+export TERM="xterm-256color"
+
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
 [[ -r $HOME/.rvm/scripts/completion ]] && . $HOME/.rvm/scripts/completion
 

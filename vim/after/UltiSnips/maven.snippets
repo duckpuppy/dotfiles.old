@@ -1,0 +1,134 @@
+snippet pom "A POM skeleton" t
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+						http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>$1</groupId>
+	<artifactId>$2</artifactId>
+	<version>${3:0.01}-SNAPSHOT</version>
+	<packaging>${4:jar}</packaging>
+	<name>${5:$2}</name>
+	$0
+</project>
+endsnippet
+
+snippet parent "A parent project reference" t
+<parent>
+	<groupId>$1</groupId>
+	<artifactId>$2</artifactId>
+	<version>$3</version>
+</parent>
+endsnippet
+
+snippet props "Project properties" t
+<properties>
+	$0
+</properties>
+endsnippet
+
+snippet depman "The Dependency Managemnt section" t
+<dependencyManagement>
+	<dependencies>
+		$0
+	</dependencies>
+</dependencyManagement>
+endsnippet
+
+snippet deps "The Maven dependencies section" t
+<dependencies>
+	$0
+</dependencies>
+endsnippet
+
+snippet dep "A dependency with default scope" t
+<dependency>
+	<groupId>$1</groupId>
+	<artifactId>$2</artifactId>
+	<version>$3</version>
+</dependency>
+endsnippet
+
+# A scoped dependency
+snippet sdep "A scoped dependency" t
+<dependency>
+	<groupId>$1</groupId>
+	<artifactId>$2</artifactId>
+	<version>$3</version>
+	<scope>$4</scope>
+</dependency>
+endsnippet
+
+# A test dependency
+snippet tdep "A dependency with test scope" t
+<dependency>
+	<groupId>$1</groupId>
+	<artifactId>$2</artifactId>
+	<version>$3</version>
+	<scope>test</scope>
+</dependency>
+endsnippet
+
+snippet exclusions "An exclusions section" t
+<exclusions>
+	$0
+</exclusion>
+endsnippet
+
+snippet exclusion "An exclusion" t
+<exclusion>
+	<groupId>$1</groupId>
+	<artifactId>$2</artifactId>
+</exclusion>
+endsnippet
+
+snippet build "The build section" t
+<build>
+	$0
+</build>
+endsnippet
+
+snippet plugs "The plugins section" t
+<plugins>
+	$0
+</plugins>
+endsnippet
+
+snippet plug "A plugin definition" t
+<plugin>
+	<groupId>${1:org.apache.maven.plugins}</groupId>
+	<artifactId>$2</artifactId>
+	<version>$3</version>
+	$0
+</plugin>
+endsnippet
+
+snippet config "Plugin configuration section" t
+<configuration>
+	$0
+</configuration>
+endsnippet
+
+snippet execs "Plugin executions" t
+<executions>
+	$0
+</executions>
+endsnippet
+
+snippet exec "A plugin execution" t
+<execution>
+	${1:<id>$2</id>}
+	<phase>$3</phase>
+	$0
+</execution>
+endsnippet
+
+snippet goals "Execution goals section" t
+<goals>
+	$0
+</goals>
+endsnippet
+
+snippet goal "Execution goal" t
+<goal>$0</goal>
+endsnippet

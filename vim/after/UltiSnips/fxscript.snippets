@@ -1,0 +1,317 @@
+snippet add "Add"
+Add(${1:srcImage1}, ${2:srcImage2}, ${3:destImage}, ${4:amount}, ${5:kAlpha});
+endsnippet
+
+snippet input "Angle"
+input ${1:varname}, "${2:${1/varname/text label/}}", Angle, ${3:default value}, ${4:min value}, ${5:max value};
+
+endsnippet
+
+snippet aspectof "AspectOf(dest)"
+AspectOf(${1:dest});
+endsnippet
+
+snippet blitrect "BlitRect"
+BlitRect(${1:sourceImage}, ${2:sourcePoly}, ${3:destImage}, ${4:destPoly});
+
+endsnippet
+
+snippet blur "BlurChannel"
+BlurChannel(${1:srcImage}, ${2:destImage}, ${3:radius}, ${4:doAlpha}, ${5:doRed}, ${6:doGreen}, ${7:doBlue}, ${8:AspectOf(${9:dest})});
+
+endsnippet
+
+snippet boundsof "BoundsOf"
+BoundsOf(${1:image}, ${2:result});
+endsnippet
+
+snippet bumpmap "Bumpmap"
+BumpMap(${1:srcImage}, ${2:destImage}, ${3:mapImage}, ${4:repeatEdges}, ${5:angle}, ${6:scale}, ${7:lumaScale}, ${8:AspectOf($2)});
+
+endsnippet
+
+snippet channelcopy "ChannelCopy"
+ChannelCopy(${1:srcIMG}, ${2:destIMG}, ${3:channel2Alpha}, ${4:channel2Red}, ${5:channel2Green}, ${6:channel2Blue});
+
+endsnippet
+
+snippet channelfill "ChannelFill"
+ChannelFill(${1:destImage}, ${2:a0-255}, ${3:r0-255}, ${4:g0-255}, ${5:b0-255});
+
+endsnippet
+
+snippet channelmultiply "ChannelMultiply"
+ChannelMultiply(${1:srcImage}, ${2:destImage}, ${3:alphaValue}, ${4:redValue}, ${5:greenValue}, ${6:blueValue});
+endsnippet
+
+snippet input "Clip"
+input ${1:varName}, "${2:${1/varname/text label/}}", Clip;
+
+endsnippet
+
+snippet input "Color"
+input ${1:varname}, "${2:${1/varname/text label/}}", Color, ${3:A}, ${4:R}, ${5:G}, ${6:B};
+
+endsnippet
+
+snippet colorof "ColorOf"
+ColorOf(${1:image}, ${2:point}, ${3:color});
+endsnippet
+
+snippet colortransform "ColorTransform"
+ColorTransform(${1:srcImage}, ${2:destImage}, ${3:matrix}, ${4:float[3]}, ${5:$4});
+endsnippet
+
+snippet convertimage "ConvertImage"
+ConvertImage(${1:src1}, ${2:dest}, ${3:colorspace});
+endsnippet
+
+snippet darken "Darken"
+Darken(${1:srcImage1}, ${2:srcImage2}, ${3:destImage}, ${4:amount}, ${5:kAlpha});
+endsnippet
+
+snippet debug "DebugText"
+DebugText("${1:label}", ${2:float value});
+endsnippet
+
+snippet difference "Difference"
+Difference(${1:srcImage1}, ${2:srcImage2}, ${3:destImage}, ${4:kAlpha});
+endsnippet
+
+snippet dimsof "DimensionsOf"
+DimensionsOf(${1:Dest}, ${2:Width}, ${3:Height});
+endsnippet
+
+snippet dimsof "DimensionsOf_w_float_vars"
+float ${1:w}, ${2:h};
+DimensionsOf(${3:dest}, $1, $2);
+image ${4:img0}[$1][$2];
+
+endsnippet
+
+snippet dimsof "DimensionsOf_w_point_vars"
+point ${1:w};
+DimensionsOf(${2:dest}, $1.x, $1.y);
+image ${3:img0}[$1.x][$1.y];
+
+endsnippet
+
+snippet displace "Displace"
+Displace(${1:srcImage}, ${2:destImage}, ${3:mapImage}, ${4:repeatEdges}, ${5:xScale}, ${6:yScale}, ${7:lumaScale}, ${8:AspectOf($2)});
+
+endsnippet
+
+snippet drawsoftdot "DrawSoftSpot"
+DrawSoftDot(${1:dest}, ${2:point/poly}, ${3:shape}, ${4:size}, ${5:softness}, ${6:subSteps}, ${7:color(s)}, ${8:opacity(s)}, ${9:aspectOf(${10:$1})});
+endsnippet
+
+snippet fillpoly "FillPoly"
+FillPoly(${1:poly}, ${2:image}, ${3:color});
+
+endsnippet
+
+snippet filter "Filter"
+Filter "${1:Name}";
+Group "${2:Name}";
+
+endsnippet
+
+snippet framepoly "FramePoly"
+FramePoly(${1:poly}, ${2:image}, ${3:color}, ${4:width});
+endsnippet
+
+snippet generator "Generator"
+Generator "${1:Name}";
+Group "${2:Name}";
+
+endsnippet
+
+snippet getpixelformat "GetPixelFormat"
+GetPixelFormat(${1:src1});
+endsnippet
+
+snippet getvideo "GetVideo"
+GetVideo(${1:srcClip}, ${2:timeOffset}, ${3:destImage});
+endsnippet
+
+snippet imageand "ImageAnd"
+ImageAnd(${1:srcImage1}, ${2:srcImage2}, ${3:destImage});
+endsnippet
+
+snippet info "InformationFlag_YUVaware"
+InformationFlag("YUVaware");
+
+endsnippet
+
+snippet info "InformationFlag_dontEraseDest"
+InformationFlag("dontEraseDest");
+
+endsnippet
+
+snippet info "InformationFlag_hasFields"
+InformationFlag("hasfields");
+
+endsnippet
+
+snippet info "InformationFlag_requiresYUV"
+InformationFlag("requiresYUV");
+
+endsnippet
+
+snippet interpolate "Interpolate"
+Interpolate(${1:p1}, ${2:p2}, ${3:percent}, ${4:result});
+endsnippet
+
+snippet invertchannel "InvertChannel"
+InvertChannel(${1:srcImage}, ${2:destImage}, ${3:doAlpha}, ${4:doRed}, ${5:doGreen}, ${6:doBlue});
+
+endsnippet
+
+snippet input "Label"
+input label_`date +%s`, "${1:Visible Text}", Label, "";
+
+endsnippet
+
+snippet levelmap "LevelMap"
+LevelMap(${1:src}, ${2:dest}, ${3:alphaMap[256]}, ${4:redMap[256]}, ${5:greenMap[256]}, ${6:blueMap[256]});
+endsnippet
+
+snippet lighten "Lighten"
+Lighten(${1:srcImage1}, ${2:srcImage2}, ${3:destImage}, ${4:amount}, ${5:kAlpha});
+endsnippet
+
+snippet makerect "MakeRect"
+MakeRect(${1:result}, ${2:left}, ${3:top}, ${4:width}, ${5:height});
+endsnippet
+
+snippet matte "Matte"
+Matte(${1:TopImage}, ${2:BottomImage}, ${3:destImage}, ${4:amount}, ${5:kAlpha});
+endsnippet
+
+snippet multiply "Multiply"
+Multiply(${1:srcImage1}, ${2:srcImage2}, ${3:destImage}, ${4:amount}, ${5:kAlpha});
+endsnippet
+
+snippet overlay "Overlay"
+Overlay(${1:srcImage1}, ${2:srcImage2}, ${3:destImage}, ${4:amount}, ${5:kAlpha});
+endsnippet
+
+snippet input "Point"
+input ${1:varname}, "${2:${1/varname/text label/}}", Point, ${3:X}, ${4:Y};
+
+endsnippet
+
+snippet input "Popup"
+input ${1:varname}, "${2:${1/varname/text label/}}", Popup, ${3:[numeric index]}, "${4:string 1}"${5:, "${6:string 2}"${7:, "${8:string 3}"${9:, "${10:string 4}"${11:, "${12:string 5}"${13:, "${14:string 6}"}}}}};
+
+endsnippet
+
+snippet input "RadioGroup"
+input ${1:varname}, "${2:${1/varname/text label/}}", RadioGroup, ${3:[numeric index]}, "${4:string 1}"${5:, "${6:string 2}"${7:, "${8:string 3}"${9:, "${10:string 4}"${11:, "${12:string 5}"${13:, "${14:string 6}"}}}}};
+
+endsnippet
+
+snippet repeat "Repeat While"
+Repeat While (${1:Condition})
+	${0:${TM_SELECTED_TEXT/(.*)$/$1/: // insert code here}}
+End Repeat;
+endsnippet
+
+snippet screen "Screen"
+Screen(${1:srcImage1}, ${2:srcImage2}, ${3:destImage}, ${4:amount}, ${5:kAlpha});
+endsnippet
+
+snippet setpixelformat "SetPixelFormat"
+SetPixelFormat(${1:dest}, ${2:colorspace});
+endsnippet
+
+snippet subtract "Subtract"
+Subtract(${1:srcImage1}, ${2:srcImage2}, ${3:destImage}, ${4:amount}, ${5:kAlpha});
+endsnippet
+
+snippet transition "Transition"
+Transition "${1:Name}";
+Group "${2:Name}";
+
+endsnippet
+
+snippet input "checkbox"
+input ${1:varname}, "${2:${1/varname/text label/}}", Checkbox, ${3:0};
+
+endsnippet
+
+snippet code "code"
+
+code
+
+
+endsnippet
+
+snippet code "code_ProducesAlpha"
+ProducesAlpha;
+
+code
+
+exposedBackground=1;
+
+endsnippet
+
+snippet for "for_next"
+for ${1:var} = ${2:min} to ${3:max}
+	${0:${TM_SELECTED_TEXT/(.*)$/$1/: // insert code here}}
+next;
+endsnippet
+
+snippet if "if"
+if (${1:Condition})
+	${0:${TM_SELECTED_TEXT/(.*)$/$1/: // insert code here}}
+end if
+
+endsnippet
+
+snippet ife "if_else"
+if (${1:Condition})
+	${2:${TM_SELECTED_TEXT/(.*)$/$1/: // code}}
+else ${3:if (${4:condition})}
+	${5: // code}
+end if
+
+endsnippet
+
+snippet kfloat "kFloat2"
+kFloat2
+endsnippet
+
+snippet kfloat "kFloat4"
+kFloat4
+endsnippet
+
+snippet kfloat "kFloat6"
+kFloat6
+endsnippet
+
+snippet kformat "kFormatRGB219"
+kFormatRGB219
+endsnippet
+
+snippet kformat "kFormatRGB255"
+kFormatRGB255
+endsnippet
+
+snippet kformat "kFormatYUV219"
+kFormatYUV219
+endsnippet
+
+snippet kfloat "kInteger"
+kInteger
+endsnippet
+
+snippet line "line"
+Line(${1:p1}, ${2:p2}, ${3:image}, ${4:color}, ${5:width});
+endsnippet
+
+snippet input "slider"
+input ${1:varname}, "${2:${1/varname/text label/}}", Slider, ${3:default value}, ${4:min value}, ${5:max value}${6: ramp ${7:number}}${8: label "${9:units}"}${10: detent ${11:number}};
+
+endsnippet
+

@@ -1,0 +1,5 @@
+*.swp
+*.class
+tags
+/build
+/archive.zip

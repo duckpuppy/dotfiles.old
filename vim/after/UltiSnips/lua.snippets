@@ -1,0 +1,42 @@
+snippet fori "for i,v in ipairs()"
+for ${1:i},${2:v} in ipairs(${3:table_name}) do
+	${0:print(i,v)}
+end
+endsnippet
+
+snippet for "for i=1,10"
+for ${1:i}=${2:1},${3:10} do
+	${0:print(i)}
+end
+endsnippet
+
+snippet forp "for k,v in pairs()"
+for ${1:k},${2:v} in pairs(${3:table_name}) do
+	${0:print(k,v)}
+end
+endsnippet
+
+snippet fun "function (fun)"
+function ${1:function_name}( ${2:...} )
+	${0:-- body}
+end
+endsnippet
+
+snippet function "function (function)"
+function ${1:function_name}( ${2:...} )
+	${0:-- body}
+end
+endsnippet
+
+snippet local "local x = 1"
+local ${1:x} = ${0:1}
+endsnippet
+
+snippet table.concat "table.concat"
+table.concat( ${1:tablename}${2:, ", "}${3:, start_index}${4:, end_index} )
+endsnippet
+
+snippet table.sort "table.sort"
+table.sort( ${1:tablename}${2:, sortfunction} )
+endsnippet
+

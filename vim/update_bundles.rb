@@ -27,7 +27,7 @@ git_bundles = [
 	"https://github.com/nelstrom/vim-textobj-rubyblock.git",
 	"https://github.com/kana/vim-textobj-user.git",
 	"https://github.com/fholgado/minibufexpl.vim.git",
-	"https://github.com/rygwdn/ultisnips.git",
+	"https://github.com/SirVer/ultisnips.git",
 	"https://github.com/MarcWeber/vim-addon-mw-utils.git",
 	"https://github.com/tomtom/tlib_vim.git",
 	"https://github.com/majutsushi/tagbar.git",

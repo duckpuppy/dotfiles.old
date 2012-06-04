@@ -123,14 +123,18 @@ if has("autocmd")
 	augroup vimrc
 		autocmd!
 		au FileType eruby,ruby setlocal nocindent
-		au FileType eruby,ruby set omnifunc=rubycomplete#Complete
+		au FileType eruby,ruby setlocal omnifunc=rubycomplete#Complete
 		au FileType eruby,ruby let g:rubycomplete_buffer_loading = 1
 		au FileType eruby,ruby let g:rubycomplete_classes_in_global = 1
 		au FileType eruby,ruby let g:rubycomplete_rails = 1
+		au FileType ruby setlocal foldmethod=syntax
+		au FileType ruby normal zR
 		au FileType java setlocal omnifunc=javacomplete#Complete
 		au FileType java setlocal completefunc=javacomplete#CompleteParamsInfo
 		au BufReadCmd *.epub call zip#Browse(expand("<amatch>"))
 		au BufRead,BufNewFile pom.xml set filetype=xml.maven
+
+
 		" Configure omnicomplete to use syntax completion if no other omnifunc exists
 		au FileType *
 					\ if &omnifunc == "" |
@@ -249,7 +253,7 @@ inoremap <c-u> <c-g>u<c-u>
 inoremap <c-w> <c-g>u<c-w>
 
 " AutoComplPop Configuration
-let g:acp_enableAtStartup = 0
+let g:acp_enableAtStartup = 1
 
 inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ?
 			\ "\<lt>C-n>" :
@@ -257,6 +261,9 @@ inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ?
 			\ "\"\\<lt>c-n>\\<lt>c-p>\\<lt>c-n>\" :" .
 			\ "\" \\<lt>bs>\\<lt>C-n>\"\<CR>"
 imap <C-@> <C-Space>
+
+nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
+vnoremap <Space> zf
 
 " Abbreviations
 

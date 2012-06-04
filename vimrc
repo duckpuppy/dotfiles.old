@@ -147,6 +147,10 @@ if has("autocmd")
 
 endif
 
+" Configure Supertab
+let g:SuperTabLongestEnhanced = 1
+let g:SuperTabLongestHighlight = 1
+
 " Configure taglist
 let Tlist_Show_One_File = 1
 

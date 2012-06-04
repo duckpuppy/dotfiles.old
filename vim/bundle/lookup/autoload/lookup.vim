@@ -1,7 +1,7 @@
 " Author:  Eric Van Dewoestine
 "
 " License: {{{
-"   Copyright (c) 2005 - 2011, Eric Van Dewoestine
+"   Copyright (c) 2005 - 2012, Eric Van Dewoestine
 "   All rights reserved.
 "
 "   Redistribution and use of this software in source and binary forms, with
@@ -63,7 +63,7 @@ endif
   let s:search = {
       \ 'aug_def': 'aug\(r\|ro\|rou\|roup\)\?!\?\s\+<element>\>',
       \ 'aug_ref': 'au\(g\|gr\|gro\|grou\|group\|t\|to\|toc\|tocm\|tocmd\)\?!\?\s\+<element>\>',
-      \ 'cmd_def': 'command!\?\s.\{-}\<<element>\>',
+      \ 'cmd_def': 'command!\?\s\(-\w\+\(=\S\+\)\?\_s*\\\?\s*\)*\<<element>\>',
       \ 'cmd_ref': '\<<element>\>',
       \ 'func_def': 'fu\(n\|nc\|nct\|ncti\|nctio\|nction\)\?!\?\s\+<element>\>',
       \ 'func_ref': '\<<element>\>',
@@ -97,23 +97,38 @@ endif
     \ }
 " }}}
 
-function! lookup#Lookup(bang) " {{{
-  let line = getline('.')
-  let syntax = synIDattr(synID(line('.'), col('.'), 1), 'name')
-
+function! lookup#Lookup(bang, element) " {{{
+  let line = ''
+  let syntax = ''
   let type = ''
-  let element = substitute(
-    \ line, '.\{-}\(\(<[a-zA-Z]\+>\)\?[[:alnum:]_:#]*' .
-    \ '\%' . col('.') . 'c[[:alnum:]_:#]*\).*', '\1', '')
+
+  let element = a:element
+  if element == ''
+    let line = getline('.')
+    let syntax = synIDattr(synID(line('.'), col('.'), 1), 'name')
+    let element = substitute(
+      \ line, '.\{-}\(\(<[a-zA-Z]\+>\)\?[[:alnum:]_:#]*' .
+      \ '\%' . col('.') . 'c[[:alnum:]_:#]*\).*', '\1', '')
+  endif
 
   if element =~? '^<sid>'
     let element = 's:' . element[5:]
   endif
 
+  " on a variable
+  if element =~ '^[bgsl]:\w\+$'
+    let type = 'var'
+
+    " edge case for script scoped function
+    if element =~ '^s:' &&
+      \ line =~ '[[:alnum:]_:#]*\%' . col('.') . 'c[[:alnum:]_:#]*\s*('
+      let type = 'func'
+    endif
+
   " on a function
-  if element =~ '^[[:alnum:]#_:]\+$' &&
-   \ (element =~ '^[A-Z]' || element =~ '[#:]') &&
-   \ line =~ '[[:alnum:]_:#]*\%' . col('.') . 'c[[:alnum:]_:#]*\s*('
+  elseif element =~ '^[[:alnum:]#_]\+$' &&
+       \ (element =~ '^[A-Z]' || element =~ '[#]') &&
+       \ (line == '' || line =~ '[[:alnum:]_#]*\%' . col('.') . 'c[[:alnum:]_#]*\s*(')
     let type = 'func'
 
   " on a command ref
@@ -124,16 +139,12 @@ function! lookup#Lookup(bang) " {{{
       let element = element[1:]
     endif
 
-  " on a variable
-  elseif element =~ '^[bgsl]:\w\+$'
-    let type = 'var'
-
   " on an augroup name
   elseif line =~ 'aug\(r\|ro\|rou\|roup\)\?!\?\s\+\w*\%' . col('.') . 'c\w*'
     let type = 'aug'
 
   " doc lookup
-  else
+  elseif a:element == ''
     let char = line[col('.') - 1]
     if element == '' && char =~ '\W' && char !~ '\s'
       let element = substitute(line, '.\{-}\(\W*\%' . col('.') . 'c\W*\).*', '\1', '')
@@ -271,7 +282,7 @@ function! s:Paths() " {{{
     let path = expand('%:p:h')
 
     " for vimrc files, look for relative .vim or vimfiles directory
-    if file =~ '^[._]g\?vimrc$'
+    if file =~ '^[._]g\?vimrc'
       if isdirectory(path . '/.vim')
         return [expand('%:p'), path . '/.vim']
       elseif isdirectory(path . '/vimfiles')

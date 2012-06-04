@@ -122,7 +122,11 @@ nnoremap <silent> <expr> $ ScreenMovement("$")
 if has("autocmd")
 	augroup vimrc
 		autocmd!
-		au FileType ruby setlocal nocindent
+		au FileType eruby,ruby setlocal nocindent
+		au FileType eruby,ruby set omnifunc=rubycomplete#Complete
+		au FileType eruby,ruby let g:rubycomplete_buffer_loading = 1
+		au FileType eruby,ruby let g:rubycomplete_classes_in_global = 1
+		au FileType eruby,ruby let g:rubycomplete_rails = 1
 		au FileType java setlocal omnifunc=javacomplete#Complete
 		au FileType java setlocal completefunc=javacomplete#CompleteParamsInfo
 		au BufReadCmd *.epub call zip#Browse(expand("<amatch>"))
@@ -157,11 +161,6 @@ let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsEditSplit="normal"
 let g:UltiSnipsSnippetsDir=g:vimhome . "/after/UltiSnips"
-
-" Configure Ruby completion
-let g:rubycomplete_buffer_loading = 1
-let g:rubycomplete_classes_in_global = 1
-" let g:rubycomplete_rails = 1
 
 " re-indent file
 nnoremap <silent> <F4> :call <SID>ReindentFile()<CR>

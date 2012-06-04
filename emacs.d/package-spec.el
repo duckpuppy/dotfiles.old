@@ -22,4 +22,5 @@
 (package "project-mode")
 (package "ntcmd")
 (package "minimap")
+(package "w3")
 (package "twilight-theme")

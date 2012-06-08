@@ -41,6 +41,7 @@ set updatetime=100 " Set update time to 1/10 second
 set wildmenu
 set wildmode=list:longest,full
 set showbreak=->
+set listchars=tab:▸\ ,eol:¬
 
 set tags=./tags;
 
@@ -214,6 +215,9 @@ nmap <silent> <leader>` :QFix<CR>
 map <C-n> :cn<CR>
 map <C-p> :cp<CR>
 
+" Toggle `set list`
+nmap <leader>l :set list!<CR>
+
 " Taglist
 nnoremap <silent> <F8> :TlistToggle<CR>
 
@@ -238,6 +242,44 @@ nnoremap <silent> <C-e> :NERDTreeToggle<CR>
 " Gtags mapping
 map <C-\>] :GtagsCursor<CR>
 
+" Command-T mappings
+cnoremap %% <C-R>=expand('%:h').'/'<cr>
+map <leader>e :edit %%
+map <leader>v :view %%
+" Open files with <leader>f
+map <leader>f :CommandTFlush<cr>\|:CommandT<cr>
+" Open files, limited to the directory of the current file, with <leader>gf
+map <leader>gf :CommandTFlush<cr>\|:CommandT %%<cr>
+
+map <leader>gv :CommandTFlush<cr>\|:CommandT app/views<cr>
+map <leader>gc :CommandTFlush<cr>\|:CommandT app/controllers<cr>
+map <leader>gm :CommandTFlush<cr>\|:CommandT app/models<cr>
+map <leader>gh :CommandTFlush<cr>\|:CommandT app/helpers<cr>
+map <leader>gl :CommandTFlush<cr>\|:CommandT lib<cr>
+map <leader>gp :CommandTFlush<cr>\|:CommandT public<cr>
+map <leader>gs :CommandTFlush<cr>\|:CommandT public/stylesheets<cr>
+map <leader>gr :topleft :split config/routes.rb<cr>
+map <leader>gg :topleft 100 :split Gemfile<cr>
+
+function! ShowRoutes()
+  " Requires 'scratch' plugin
+  :topleft 100 :split __Routes__
+  " Make sure Vim doesn't write __Routes__ as a file
+  :set buftype=nofile
+  " Delete everything
+  :normal 1GdG
+  " Put routes output in buffer
+  :0r! rake -s routes
+  " Size window to number of lines (1 plus rake output length)
+  :exec ":normal " . line("$") . "_ "
+  " Move cursor to bottom
+  :normal 1GG
+  " Delete empty trailing line
+  :normal dd
+endfunction
+map <leader>gR :call ShowRoutes()<cr>
+
+
 " Capture the output of a command to a new tab
 function! Capture (cmd)
 	redir => message
@@ -253,7 +295,7 @@ inoremap <c-u> <c-g>u<c-u>
 inoremap <c-w> <c-g>u<c-w>
 
 " AutoComplPop Configuration
-let g:acp_enableAtStartup = 1
+let g:acp_enableAtStartup = 0
 
 inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ?
 			\ "\<lt>C-n>" :

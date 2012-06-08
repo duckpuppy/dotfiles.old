@@ -13,6 +13,7 @@ git_bundles = [
   "https://github.com/tpope/vim-cucumber.git",
 	"https://github.com/tpope/vim-rake.git",
 	"https://github.com/tpope/vim-bundler.git",
+	"https://github.com/tpope/vim-rvm.git",
 	"https://github.com/scrooloose/nerdcommenter.git",
 	"https://github.com/scrooloose/nerdtree.git",
 	"https://github.com/tpope/vim-abolish.git",
@@ -23,7 +24,6 @@ git_bundles = [
   "https://github.com/vim-ruby/vim-ruby.git",
 	"https://github.com/tsaleh/vim-matchit.git",
 	"https://github.com/othree/html5.vim.git",
-	"https://github.com/astashov/vim-ruby-debugger.git",
 	"https://github.com/nelstrom/vim-textobj-rubyblock.git",
 	"https://github.com/kana/vim-textobj-user.git",
 	"https://github.com/fholgado/minibufexpl.vim.git",
@@ -60,7 +60,8 @@ git_bundles = [
 	"https://github.com/kchmck/vim-coffee-script.git",
 	#"https://github.com/vim-scripts/perforce.git",
 	"https://github.com/csexton/jekyll.vim.git",
-	"https://github.com/ervandew/supertab.git"
+	"https://github.com/ervandew/supertab.git",
+	"https://github.com/wincent/Command-T.git",
 ]
 
 vim_org_scripts = [
